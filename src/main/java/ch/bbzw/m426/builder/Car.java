@@ -1,9 +1,11 @@
 package ch.bbzw.m426.builder;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
+// Make Car only buildable by its builder
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 //@Builder
 public class Car {
