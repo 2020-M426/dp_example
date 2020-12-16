@@ -1,13 +1,14 @@
 package ch.bbzw.m426.builder;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 // Make Car only buildable by its builder
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-//@Builder
+@Builder(builderClassName = "LBuilder")
 public class Car {
 
     private final CarEngine engine;
@@ -19,11 +20,10 @@ public class Car {
         return String.format("Car with engine %s, color %s and interior color %s", this.engine, this.carColor, this.interiorColor);
     }
 
-    /* Lombok
-    public static CarBuilder builder(CarEngine engine) {
-        return new CarBuilder().engine(engine);
+    // Lombok
+    public static LBuilder builder(CarEngine engine) {
+        return new LBuilder().engine(engine);
     }
-    */
 
     public static class CarBuilder {
         private final CarEngine engine;
@@ -36,12 +36,14 @@ public class Car {
             this.interiorColor = InteriorColor.BLACK;
         }
 
-        public void withColor(final CarColor carColor) {
+        public CarBuilder withColor(final CarColor carColor) {
             this.carColor = carColor;
+            return this;
         }
 
-        public void withInteriorColor(final InteriorColor interiorColor) {
+        public CarBuilder withInteriorColor(final InteriorColor interiorColor) {
             this.interiorColor = interiorColor;
+            return this;
         }
 
         public Car build() {

@@ -21,19 +21,20 @@ public class Testli {
         // Builder
         /* Manual Builder */
         System.out.println("==BUILDER==");
-        final Car.CarBuilder carBuilder = new Car.CarBuilder(CarEngine.ELECTRONIC);
-        carBuilder.withColor(CarColor.GRAY);
-        carBuilder.withInteriorColor(InteriorColor.BROWN);
-        final Car grayBrownCar = carBuilder.build();
+        final Car grayBrownCar =
+                new Car.CarBuilder(CarEngine.ELECTRONIC)
+                        .withColor(CarColor.GRAY)
+                        .withInteriorColor(InteriorColor.BROWN)
+                        .build();
         System.out.println(grayBrownCar);
 
-        /* Lombok Builder
-        final Car.CarBuilder carBuilder = Car.builder(CarEngine.RICH);
-        carBuilder.carColor(CarColor.YELLOW);
-        carBuilder.interiorColor(InteriorColor.GRAY);
-        final Car yellowGrayCar = carBuilder.build();
+        // Lombok Builder
+        final Car yellowGrayCar =
+                Car.builder(CarEngine.RICH)
+                        .carColor(CarColor.YELLOW)
+                        .interiorColor(InteriorColor.GRAY)
+                        .build();
         System.out.println(yellowGrayCar);
-        */
 
         // Prototype
         System.out.println("==PROTOTYPE==");
